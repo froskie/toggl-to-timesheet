@@ -16,7 +16,7 @@ function readAndParseCSV(fileName, cb) {
   var props = null;
   var output = [];
 
-  fs.readFile(__dirname + '/' + fileName, 'utf8', function(error, contents) {
+  fs.readFile(fileName, 'utf8', function(error, contents) {
     if (error) {
       console.log(error);
       return;
@@ -46,7 +46,7 @@ function outputCSV(tasksList) {
     rows.push(row.join(','));
     time += parseFloat(task.time);
   }
-  var filePath = __dirname + '/' + argv.output;
+  var filePath = argv.output;
   fs.writeFile(filePath, rows.join('\n'), function(err) {
     if (err) {
       console.log(err);
